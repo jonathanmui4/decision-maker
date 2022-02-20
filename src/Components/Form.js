@@ -1,22 +1,31 @@
-import {React, useRef } from "react";
-import {GrBin} from "react-icons/gr";
-
+import {React, useRef} from "react";
+import tasks from "../data/tasks";
 
 function Form() {
     const taskRef = useRef();
 
     function handleAddTask() {
+        tasks.push(taskRef.current.value);
+    }
 
+    function handleRemoveAll() {
+        tasks = [];
+    }
+
+    function handleRandomiser() {
+        const length = tasks.length;
+        const index = Math.floor((Math.random() * (length)));
+        window.alert(tasks[index]);
     }
 
     return(
-        <form className="grid grid-cols-2 gap-2">
+        <form className="grid grid-cols-3 gap-2">
             <input 
                 type="text"
                 ref={taskRef}
                 className="py-4 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-blue-300 bg-gray-200 text-gray-700"
                 placeholder="Type task here"
-                name="Task"
+                name="task"
             />
             <button
                 type="button"
@@ -24,6 +33,20 @@ function Form() {
                 className="transition duration-500 ease hover:bg-purple-900 bg-blue-600 text-2xl rounded-full w-12 h-12 text-white cursor-pointer"
             >
                 +
+            </button>
+            <button
+                type="button"
+                onClick={handleRemoveAll}
+                className="transition duration-500 ease hover:bg-red-900 bg-red-500 text-2xl rounded-full text-white cursor-pointer"
+            >
+                Remove all
+            </button>
+            <button
+                type="button"
+                onClick={handleRandomiser}
+                className="transition duration-500 ease hover:bg-purple-900 bg-blue-600 text-2xl rounded-full px-8 py-3 text-white cursor-pointer"
+            >
+                Tell me what to do
             </button>
         </form>
     );
