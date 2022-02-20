@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import Form from './Components/Form';
-import Tasklist from './Components/Tasklist';
 
 
 export default function App() {
@@ -16,7 +15,6 @@ export default function App() {
       </section>
       <div className='grid grid-cols-4'>
         <div className="col-start-2 col-span-2 bg-gray-100 shadow-lg rounded-lg p-8 pb-12 mb-8">
-          <Tasklist />
           <Form />
         </div>
       </div>     
