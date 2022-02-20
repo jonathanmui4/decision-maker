@@ -1,19 +1,20 @@
 import React, { Fragment, useRef, useState} from "react";
-import tasks from "../data/tasks";
-import {RiDeleteBin5Line} from "react-icons/ri";
+import Tasklist from "./Tasklist";
 
 function Form() {
     const taskRef = useRef();
 
-    const [taskList, setTaskList] = React.useState(tasks);
+    const [taskList, setTaskList] = React.useState([]);
 
     function handleAddTask() {
         const newTaskList = taskList.concat(taskRef.current.value);
         setTaskList(newTaskList);
+        taskRef.current.value = "";
     }
 
     function handleDeleteTask() {
-
+        // const newTaskList = taskList.filter((task) => task !== );
+        // setTaskList(newTaskList);
     }
 
     function handleRemoveAll() {
@@ -22,31 +23,14 @@ function Form() {
     }
 
     function handleRandomiser() {
-        const length = tasks.length;
+        const length = taskList.length;
         const index = Math.floor((Math.random() * (length)));
         window.alert(taskList[index]);
     }
 
     return(
         <Fragment>
-            <div className="mb-4">
-            {taskList.map((task) => (
-                <Fragment>
-                    <div>
-                        <div>
-                            {task}
-                            <button
-                                type="button"
-                                onClick={handleDeleteTask}
-                                className="transition duration-500 ease hover:text-red-900 text-red-500 text-xl cursor-pointer"
-                            >
-                                <RiDeleteBin5Line />
-                            </button>
-                        </div>
-                    </div>                    
-                </Fragment>                               
-            ))}
-        </div>
+            <Tasklist taskList={taskList} handleDeleteTask={handleDeleteTask} />
             <form className="grid grid-cols-3 gap-2">
                 <input 
                     type="text"
