@@ -14,9 +14,9 @@ function Form() {
         taskRef.current.value = "";
     }
 
-    function handleDeleteTask() {
-        // const newTaskList = taskList.filter((task) => task !== );
-        // setTaskList(newTaskList);
+    function handleDeleteTask(id) {
+        const newTaskList = taskList.filter((task) => task.id !== id);
+        setTaskList(newTaskList);
     }
 
     function handleRemoveAll() {

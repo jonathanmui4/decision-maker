@@ -12,7 +12,7 @@ function TaskList({ taskList, handleDeleteTask }) {
                             {task.task}
                             <button
                                 type="button"
-                                onClick={handleDeleteTask}
+                                onClick={() => handleDeleteTask(task.id)}
                                 className="transition duration-500 ease hover:text-red-900 text-red-500 text-xl cursor-pointer"
                             >
                                 <RiDeleteBin5Line />
