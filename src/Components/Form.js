@@ -47,7 +47,7 @@ function Form() {
     return(
         <Fragment>
             <Tasklist taskList={taskList} handleDeleteTask={handleDeleteTask} />
-            <form className="grid grid-cols-3 gap-2">
+            <form className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2">
                 <input 
                     type="text"
                     ref={taskRef}
@@ -58,21 +58,21 @@ function Form() {
                 <button
                     type="button"
                     onClick={handleAddTask}
-                    className="transition duration-500 ease hover:bg-purple-900 bg-blue-600 text-2xl rounded-full w-12 h-12 text-white cursor-pointer"
+                    className="transition duration-500 ease hover:bg-purple-900 bg-blue-600 text-lg lg:text-2xl rounded-full w-12 h-12 text-white cursor-pointer"
                 >
                     +
                 </button>
                 <button
                     type="button"
                     onClick={handleRemoveAll}
-                    className="transition duration-500 ease hover:bg-red-900 bg-red-500 text-2xl rounded-full text-white cursor-pointer"
+                    className="transition duration-500 ease hover:bg-red-900 bg-red-500 text-base lg:text-xl rounded-full px-4 py-1 lg:px-8 lg:py-3 text-white cursor-pointer"
                 >
                     Remove all
                 </button>
                 <button
                     type="button"
                     onClick={handleRandomiser}
-                    className="transition duration-500 ease hover:bg-purple-900 bg-blue-600 text-2xl rounded-full px-8 py-3 text-white cursor-pointer"
+                    className="transition duration-500 ease hover:bg-purple-900 bg-blue-600 text-base lg:text-xl rounded-full px-4 py-1 lg:px-8 lg:py-3 text-white cursor-pointer"
                 >
                     Tell me what to do
                 </button>
