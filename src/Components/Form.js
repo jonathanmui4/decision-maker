@@ -7,7 +7,9 @@ function Form() {
     const [taskList, setTaskList] = React.useState([]);
 
     function handleAddTask() {
-        const newTaskList = taskList.concat(taskRef.current.value);
+        const newTask = { id: new Date().getTime().toString(), task: taskRef.current.value };
+        const newTaskList = taskList.concat(newTask);
+        console.log(newTaskList);
         setTaskList(newTaskList);
         taskRef.current.value = "";
     }
@@ -25,7 +27,7 @@ function Form() {
     function handleRandomiser() {
         const length = taskList.length;
         const index = Math.floor((Math.random() * (length)));
-        window.alert(taskList[index]);
+        window.alert(taskList[index].task);
     }
 
     return(

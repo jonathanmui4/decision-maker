@@ -4,11 +4,12 @@ import {RiDeleteBin5Line} from "react-icons/ri";
 function TaskList({ taskList, handleDeleteTask }) {
     return (
         <div className="mb-4">
+            <ul>
             {taskList.map((task) => (
                 <Fragment>
                     <div>
-                        <div>
-                            {task}
+                        <li key={task.id}>
+                            {task.task}
                             <button
                                 type="button"
                                 onClick={handleDeleteTask}
@@ -16,10 +17,11 @@ function TaskList({ taskList, handleDeleteTask }) {
                             >
                                 <RiDeleteBin5Line />
                             </button>
-                        </div>
+                        </li>
                     </div>                    
                 </Fragment>                               
             ))}
+            </ul>           
         </div>
     )
 }
