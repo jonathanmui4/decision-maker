@@ -1,17 +1,27 @@
 import React, { Fragment, useRef, useState} from "react";
 import Tasklist from "./Tasklist";
+import Notification from "./Notification";
 
 function Form() {
     const taskRef = useRef();
 
     const [taskList, setTaskList] = React.useState([]);
+    const [alert, setAlert] = useState({show: false, message: "", type:''});
+
+    function showAlert(show=false, message="", type="") {
+        setAlert({show, message, type});
+    } 
 
     function handleAddTask() {
-        const newTask = { id: new Date().getTime().toString(), task: taskRef.current.value };
-        const newTaskList = taskList.concat(newTask);
-        console.log(newTaskList);
-        setTaskList(newTaskList);
-        taskRef.current.value = "";
+        if (taskRef.current.value === "") {
+            showAlert(true, "Please enter a task!", "red");
+        }
+        else {
+            const newTask = { id: new Date().getTime().toString(), task: taskRef.current.value };
+            const newTaskList = taskList.concat(newTask);
+            setTaskList(newTaskList);
+            taskRef.current.value = "";
+        }       
     }
 
     function handleDeleteTask(id) {
@@ -26,8 +36,12 @@ function Form() {
 
     function handleRandomiser() {
         const length = taskList.length;
+        if (length === 0) {
+            showAlert(true, "Whoa you have no tasks in your list!", "red");
+        }
         const index = Math.floor((Math.random() * (length)));
-        window.alert(taskList[index].task);
+        const textToPrint = "Let's " + taskList[index].task
+        showAlert(true, textToPrint, "green");
     }
 
     return(
@@ -63,6 +77,7 @@ function Form() {
                     Tell me what to do
                 </button>
             </form>
+            {alert.show && <Notification {...alert} removeAlert={showAlert} />}
         </Fragment>        
     );
 }

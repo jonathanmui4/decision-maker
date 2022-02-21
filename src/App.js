@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import Form from './Components/Form';
 
-
 export default function App() {
+
   return (
     <Fragment>
       <header className='text-center text-zinc-300'>
